@@ -1,0 +1,67 @@
+ <%if(cars.length == 0) {%>
+      <div class="empty-box">
+        <img src="assets/images/index/empty.png" alt="" class="empty-img">
+        <p class="empty-text">当前没有互助车辆</p>
+        <span class="empty-button" id="empty-car">添加车辆，开启互助</span>
+      </div>
+      <%}else {%>
+      <div class="car-box">
+
+        <div class="pay-car list-block">
+          <%for(var i = 0; i < cars.length; i++) {%>
+          <div class="item-content">
+            <div class="item-inner car-info">
+              <div class="car-number">
+                <%if(cars[i].status == 0) {%>
+                <div class="car-box-user">
+                  <span class="car-license"><%:=cars[i].licencenumber%></span>
+                  <span class="no-useful">未加入</span>
+                </div>
+                <div class="huzhu-ing">成功充值9元互助即可加入互助</div>
+                <%} else if(cars[i].status == 1) {%>
+                <div class="car-box-user">
+                  <span class="car-license"><%:=cars[i].licencenumber%></span>
+                  <span class="no-useful">等待生效</span>
+                </div>
+                <div class="huzhu-wait">您的互助将于</div>
+                <div class="huzhu-wait"><%:=XMDD.fecha(cars[i].validtime, 'YYYYdotMMdotDDHHmm', 'YYYYMMDDHHmmss')%>生效</div>
+                <%} else if(cars[i].status == 2) {%>
+                <div class="car-box-user">
+                  <span class="car-license"><%:=cars[i].licencenumber%></span>
+                  <span class="no-useful">互助中</span>
+                </div>
+                <div class="huzhu-ing">互助已生效，正与其他车辆互助中</div>
+                <%} else if(cars[i].status == 3) {%>
+                <div class="car-box-user">
+                  <span class="car-license"><%:=cars[i].licencenumber%></span>
+                  <span class="no-useful">互助金不足</span>
+                </div>
+                <div class="huzhu-less">补足互助金后才可以继续与其他车辆进行互助</div>
+                <%}%>
+              </div>
+              <div class="car-money">
+                <%if(cars[i].isFirstReward == 1) {%>
+                <div class="m_wash j_wash">
+                  <img src="assets/images/icon-gift.png" alt="" class="u_gift">
+                  <span>首充送洗车券</span>
+                </div>
+                <%}%>
+                <div class="surplus-money">剩余互助金<span class="color-warning"><span class="icon-font">￥</span><%:=cars[i].fee%></span>
+                </div>
+                <div class="add-money">
+                  <img src="assets/images/pay/minnew.png" alt="" class="min">
+                  <span class="color-warning">
+                    <span class="icon-font">￥</span>
+                    <span class="finalPrice" id="<%:=cars[i].id%>">9</span>
+                  </span>
+                  <img src="assets/images/pay/plusnew.png" alt="" class="plus">
+                </div>
+              </div>
+            </div>
+          </div>
+          <%}%>
+
+        </div>
+      </div>
+
+      <%}%>

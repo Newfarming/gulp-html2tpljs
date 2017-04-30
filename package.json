@@ -1,0 +1,19 @@
+{
+  "name": "gulp-html2tpljs",
+  "version": "1.0.0",
+  "description": "用于将html模板转换成requirejs所支持的便于打包的AMD格式的js文件。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Newfarming",
+  "license": "ISC",
+  "dependencies": {
+    "js-beautify": "^1.6.12",
+    "through2": "^2.0.3",
+    "vinyl": "^2.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
